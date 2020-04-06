@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="todo.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDkGVzo3UuTIA6pbI_zU4cBHwQXbpLdenU",
+    authDomain: "jsaugbatch.firebaseapp.com",
+    databaseURL: "https://jsaugbatch.firebaseio.com",
+    projectId: "jsaugbatch",
+    storageBucket: "",
+    messagingSenderId: "119590821497",
+    appId: "1:119590821497:web:e8f094c78818e97b"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script>
+    var userid = 'ajaysharma';
+    var obj = {'userid':userid};
+    let promise = firebase.database().ref('/users/'+userid).set(obj);
+        promise.then(data=>{
+          console.log(data);
+        }).catch(err=> console.log('not working'));
+        </script>
+    <style>  
+      input{
+          margin-top: 30px;
+          border: 2px solid gray;
+          margin-left: 40px;
+          outline: none;
+          text-align: center;
+          border-radius: 10px;
+          padding: 8px;
+          width: 300px;
+          outline: none;
+          height: 18px;
+      }    
+      input:focus{
+        border: 2px solid dodgerblue;
+        box-shadow: 0px 0px 8px 0px dodgerblue;
+      }
+      input::placeholder{
+        font-family: fantasy;
+      }
+      #alltask{
+        position: absolute;
+        top: 10px;
+        left: 900px;
+
+      }
+      .main{
+        width: 100%;
+        margin-top: -22px;
+        margin-left: -8px;
+        position: relative;
+        height: 745px;
+        background: linear-gradient(-45deg, red, orange);
+        background-size: fill; 
+      }
+      #addtask{
+        border: 1px solid black;
+        position: absolute;
+        top: 70px;
+        left: 40px;
+        padding: 20px;
+        box-shadow: 0px 0px 8px 0px black;
+     }
+    </style>
+    
+</head>
+<body>
+  <div class="main">
+    <div id="addtask">
+        <h1>TODAYS TASK:</h1>
+        <label for="">ID:</label>
+        <input type="tel" id="unique">
+        <br>
+        <label for="">NAME:</label>
+        <input type="text" id="name">
+        <br>
+        <label>DESCRIPTION:</label>
+        <input type="text" id="desc">
+        <br>
+        <label for="">ENDDATE:</label>
+        <input type="date" id="enddate">
+        <br>
+        <button id="add">ADD TASK</button>
+    </div>
+    <div id="alltask">
+            <h1>ALL TASKS:</h1>
+    </div>
+   </div> 
+</body>
+</html>
